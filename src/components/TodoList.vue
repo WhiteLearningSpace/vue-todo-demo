@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {Todo} from "../composables/useTodo";
+import {Todo} from "../hooks/useTodo";
 
 const {todos} = defineProps<{
   todos: Todo[],
