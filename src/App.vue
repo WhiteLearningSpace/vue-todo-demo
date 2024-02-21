@@ -1,0 +1,25 @@
+<script lang="ts" setup>
+import TodoAdd from "./components/TodoAdd.vue";
+import TodoFilter from "./components/TodoFilter.vue";
+import TodoList from "./components/TodoList.vue";
+import {useTodo} from "./composables/useTodo.ts";
+import {useFilteredTodo} from "./composables/useFilteredTodo.ts";
+
+const {todos, addTodo, removeTodo, toggleTodo} = useTodo();
+
+const {stateFilter, filteredTodos} = useFilteredTodo(todos);
+
+</script>
+
+<template>
+  <div>
+    <h1>TODOLIST</h1>
+    <todo-add @add-todo="addTodo"/>
+    <todo-filter v-model="stateFilter"/>
+    <todo-list :todos="filteredTodos" @remove-todo="removeTodo" @toggle-todo="toggleTodo"/>
+  </div>
+</template>
+
+<style scoped>
+
+</style>
