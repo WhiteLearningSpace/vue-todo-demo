@@ -1,13 +1,19 @@
 <script lang="ts" setup>
 
+import {ref} from "vue";
+
+const text = ref<string>("")
+
 const emits = defineEmits<{
-  addTodo: (todo: string) => void
+  addTodo: [todo: string]
 }>();
 
 
-const onSubmit = (e: SubmitEvent) => {
-  const todo = e.target.querySelector('input').value;
-  emits('addTodo', todo);
+const onSubmit = () => {
+  if (!text.value) {
+    return;
+  }
+  emits('addTodo', text.value);
 }
 
 
@@ -16,7 +22,7 @@ const onSubmit = (e: SubmitEvent) => {
 <template>
   <form @submit.prevent="onSubmit">
     <div class="add-input">
-      <input type="text">
+      <input type="text" v-model.trim="text">
       <button type="submit"></button>
     </div>
   </form>

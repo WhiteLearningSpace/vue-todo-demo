@@ -6,8 +6,8 @@ const {todos} = defineProps<{
 }>();
 
 defineEmits<{
-  removeTodo: (id: number) => void,
-  toggleTodo: (id: number) => void,
+  removeTodo: [id: number],
+  toggleTodo: [id: number],
 }>();
 </script>
 
