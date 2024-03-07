@@ -34,6 +34,14 @@ export function useTodo() {
     }
 
     /**
+     * 删除所有事项
+     */
+    const removeAll = () => {
+        todos.value = [];
+        localStorage.setItem('todos', JSON.stringify(todos.value));
+    }
+
+    /**
      * 切换事项状态
      * @param id 事项id
      */
@@ -73,7 +81,8 @@ export function useTodo() {
         todos,
         addTodo,
         removeTodo,
-        toggleTodo
+        toggleTodo,
+        removeAll,
     }
 }
 

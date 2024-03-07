@@ -14,6 +14,7 @@ const onSubmit = () => {
     return;
   }
   emits('addTodo', text.value);
+  text.value = "";
 }
 
 
