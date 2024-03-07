@@ -16,7 +16,7 @@ export function useTodo() {
      * @param title 事项标题
      */
     const addTodo = (title: string) => {
-        todos.value.push({
+        todos.value.unshift({
             id: todos.value.length + 1,
             text: title,
             isCompleted: false
