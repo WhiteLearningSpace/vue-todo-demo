@@ -20,7 +20,7 @@ const {
 
 <template>
   <div>
-    <h1><a href="https://gitee.com/linw-gite/vue-todo-demo">gitee仓库</a></h1>
+    <h1><a href="https://gitee.com/linw-gite/vue-todo-demo" target="_blank">gitee仓库</a></h1>
 
     <h1>TODOLIST</h1>
     <todo-add @add-todo="addTodo"/>
