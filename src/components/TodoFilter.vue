@@ -1,9 +1,10 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 const stateFilter = defineModel();
 
 const emits = defineEmits<{
   removeAll: [],
+  removeAllFiltered: [],
 }>();
 
 </script>
@@ -12,22 +13,25 @@ const emits = defineEmits<{
   <div class="container">
     <div id="state-radios">
       <label>
-        <input type="radio" name="state" value="all" v-model="stateFilter">
+        <input v-model="stateFilter" name="state" type="radio" value="all">
         <span>全部</span>
       </label>
       |
       <label>
-        <input type="radio" name="state" value="completed" v-model="stateFilter">
+        <input v-model="stateFilter" name="state" type="radio" value="completed">
         <span>已完成</span>
       </label>
       |
       <label>
-        <input type="radio" name="state" value="incomplete" v-model="stateFilter">
+        <input v-model="stateFilter" name="state" type="radio" value="incomplete">
         <span>未完成</span>
       </label>
     </div>
 
-    <button id="remove-all-btn" @click="emits('removeAll')">清空列表</button>
+    <div>
+      <button class="remove-all-btn" @click="emits('removeAllFiltered')">清空当前列表</button>
+      <button class="remove-all-btn" @click="emits('removeAll')">清空列表</button>
+    </div>
   </div>
 </template>
 
@@ -57,8 +61,9 @@ const emits = defineEmits<{
   color: #0045ff;
 }
 
-#remove-all-btn {
+.remove-all-btn {
   background-color: #ff4d4f;
   color: white;
+  margin-left: 8px;
 }
 </style>
