@@ -111,19 +111,20 @@ export function useTodo() {
         saveTodos()
     }
 
+    const todoStorageKey = "d0be6521-e91f-e9be-3fe6-a7afd30cc59c-todoStorageKey";
 
     /**
      * 保存事项列表到本地存储
      */
     const saveTodos = () => {
-        localStorage.setItem('todos', JSON.stringify(todos.value));
+        localStorage.setItem(todoStorageKey, JSON.stringify(todos.value));
     }
 
     /**
      * 获取事项列表
      */
     const getTodos = (): Todo[] => {
-        const todos = localStorage.getItem('todos');
+        const todos = localStorage.getItem(todoStorageKey);
         if (todos) {
             return JSON.parse(todos);
         }
@@ -132,8 +133,8 @@ export function useTodo() {
 
     onMounted(() => {
         if (isToGenerateMockData) {
-            if (localStorage.getItem('todos') === null) {
-                localStorage.setItem('todos', JSON.stringify(mockData));
+            if (localStorage.getItem(todoStorageKey) === null) {
+                localStorage.setItem(todoStorageKey, JSON.stringify(mockData));
             }
         }
 
